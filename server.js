@@ -9,6 +9,6 @@ app.use(compression());
 app.use(express.static(__dirname + '/'));
 
 const port = 3011;
-app.listen();
+app.listen(port);
 
 console.log("Serwer running on port " + port);
