@@ -1,4 +1,3 @@
-// Imports
 const argv = require("yargs").argv;
 const browserify = require("browserify");
 const browserSync = require("browser-sync").create();
@@ -18,21 +17,22 @@ const tslint = require("gulp-tslint");
 const uglify = require("gulp-uglify");
 const watchify = require("watchify");
 
-// Settings
 const rootBuildPath = "./dist/";
 const cssBundleName = "site.css";
 const cssBundleBuildPath = rootBuildPath + "/css/" + cssBundleName;
 const cssSource = "./scss/site.scss";
 const cssBuildPath = rootBuildPath + "css";
+const fontSource = "./bower_components/weather-icons/font/**";
+const fontBuildPath = rootBuildPath + "font";
 const htmlSource = "./index.html";
+const imgSource = "./assets/img/*.jpg";
+const imgBuildPath = "./dist/img";
 const jsBundleName = "bundle.js";
 const jsBundleBuildDirectory = rootBuildPath + "app";
 const jsBundleBuildPath = jsBundleBuildDirectory + "/bundle.js";
 const jsSourceDirectory = "./app";
 const jsEntryPoint = jsSourceDirectory + "/main.ts";
 const jsSource = jsSourceDirectory + "/**/*.ts";
-
-// Things to be copied to lib folder.
 const libSource = [
     "node_modules/es6-shim/es6-shim.min.js",
     "node_modules/es6-shim/es6-shim.map",
@@ -70,7 +70,7 @@ var browserifyOptions = {
     plugin: [tsify]
 };
 
-if (argv._.indexOf("dev") > -1) {
+if (argv.watch) {
     browserifyOptions.cache = {};
     browserifyOptions.packageCache = {};
     browserifyOptions.plugin.push(watchify);
@@ -100,6 +100,16 @@ gulp.task("css", function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task("font", function () {
+    return gulp.src(fontSource)
+        .pipe(gulp.dest(fontBuildPath));
+})
+
+gulp.task("img", function () {
+    return gulp.src(imgSource)
+        .pipe(gulp.dest(imgBuildPath));
+});
+
 gulp.task("lib", function () {
     return gulp.src(libSource)
         .pipe(gulp.dest(libBuildPath));
@@ -122,7 +132,11 @@ gulp.task("server", function () {
         .pipe(gulp.dest(rootBuildPath));
 })
 
-gulp.task("default", ["html", "lib", "templates", "server"]);
+gulp.task("default", ["font", "html", "img", "lib", "templates", "server"]);
+
+gulp.task("html-watch", ["html"], () => browserSync.reload());
+gulp.task("js-watch", ["js"], () => browserSync.reload());
+gulp.task("templates-watch", ["templates"], () => browserSync.reload());
 
 gulp.task("dev", ["default"], function () {
     exec("node dist/server", function (err, stdout, stderr) {
@@ -130,9 +144,9 @@ gulp.task("dev", ["default"], function () {
         console.error(stderr);
     });
 
-    gulp.watch(htmlSource, ["html"]).on("change", browserSync.reload);
-    gulp.watch(jsSource, ["js"]).on("change", browserSync.reload);
-    gulp.watch(templatesSource, ["templates"]).on("change", browserSync.reload);;
+    gulp.watch(htmlSource, ["html-watch"]);
+    gulp.watch(jsSource, ["js-watch"]);
+    gulp.watch(templatesSource, ["templates-watch"]);
     gulp.watch(cssSource, ["css"]);
 
     browserSync.init({
