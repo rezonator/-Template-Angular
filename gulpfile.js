@@ -40,11 +40,7 @@ const libSource = [
     "node_modules/reflect-metadata/Reflect.js",
     "node_modules/reflect-metadata/Reflect.js.map"
 ];
-const cssVendorSource = [
-     "node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css"
-];
 const libBuildPath = rootBuildPath + "/lib";
-const cssVendorPath = cssBuildPath + "/vendor";
 const serverSource = "./server.js";
 const templatesSource = "./app/**/*.html";
 const templatesBuildPath = rootBuildPath + "app";
@@ -109,11 +105,6 @@ gulp.task("lib", function () {
         .pipe(gulp.dest(libBuildPath));
 });
 
-gulp.task("cssVendor", function() {
-    return gulp.src(cssVendorSource)
-        .pipe(gulp.dest(cssVendorPath));
-});
-
 gulp.task("templates", function () {
     return gulp.src(templatesSource)
         .pipe(gulp.dest(templatesBuildPath));
@@ -131,7 +122,7 @@ gulp.task("server", function () {
         .pipe(gulp.dest(rootBuildPath));
 })
 
-gulp.task("default", ["html", "lib", "cssVendor",  "templates", "server"]);
+gulp.task("default", ["html", "lib", "templates", "server"]);
 
 gulp.task("dev", ["default"], function () {
     exec("node dist/server", function (err, stdout, stderr) {
