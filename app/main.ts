@@ -4,9 +4,10 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
 import {TaskListComponent} from "./tasks/task-list.component";
 import {routing} from './app.routes';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
-    imports: [BrowserModule, routing],
+    imports: [BrowserModule, routing, HttpModule],
     declarations: [AppComponent, TaskListComponent],
     bootstrap: [AppComponent]
 })
