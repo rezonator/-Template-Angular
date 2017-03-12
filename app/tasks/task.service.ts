@@ -15,13 +15,15 @@ export interface Task {
     name : string,
     ownerid :string,
     status : TaskStatus,
-    update : string    
+    update : string   ,
+    //tags : Array<any> 
+    // pamietac o strukturalnej widzialnosci - szef moze widziec themesy swich podwladnych etc
 }
 
 @Injectable()
 export class TaskService{
     tasks = [
-        { id : "123", name : "task1", ownerid : "someid", status : TaskStatus.Idle, update : "somestring" },
+        { id : "123", name : "task1", ownerid : "someid", status : TaskStatus.Idle, update : "somestring"  },
         { id : "123", name : "task1", ownerid : "someid", status : TaskStatus.Idle, update : "somestring" },
         { id : "123", name : "task1", ownerid : "someid", status : TaskStatus.Idle, update : "somestring" },
         { id : "123", name : "task1", ownerid : "someid", status : TaskStatus.Idle, update : "somestring" }

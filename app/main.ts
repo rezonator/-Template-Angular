@@ -5,10 +5,12 @@ import {AppComponent} from "./app.component";
 import {TaskListComponent} from "./tasks/task-list.component";
 import {routing} from './app.routes';
 import {HttpModule} from "@angular/http";
+import {EnumPipe} from "./shared/enum.pipe";
+
 
 @NgModule({
     imports: [BrowserModule, routing, HttpModule],
-    declarations: [AppComponent, TaskListComponent],
+    declarations: [AppComponent, TaskListComponent, EnumPipe],
     bootstrap: [AppComponent]
 })
 class AppModule { }
