@@ -16,6 +16,7 @@ const tsify = require("tsify");
 const tslint = require("gulp-tslint");
 const uglify = require("gulp-uglify");
 const watchify = require("watchify");
+const zip = require("gulp-zip");
 
 const rootBuildPath = "./dist/";
 const cssBundleName = "site.css";
@@ -51,7 +52,7 @@ function logError(err) {
     this.emit("end");
 }
 
-function shouldMinify() {
+function isReleaseMode() {
     return argv.release;
 }
 
@@ -65,7 +66,7 @@ gulp.task("lint", function () {
 });
 
 var browserifyOptions = {
-    debug: !shouldMinify(),
+    debug: !isReleaseMode(),
     entries: [jsEntryPoint, typings],
     plugin: [tsify]
 };
@@ -78,6 +79,12 @@ if (argv.watch) {
 
 var browserifyInstance = browserify(browserifyOptions);
 
+// If were NOT in prod - ignore this file conditionally!
+// that way it will compile but after - js will not be included :>
+if(!isReleaseMode()) {
+    browserifyInstance.ignore(require.resolve("./app/prod.ts"));
+}
+
 gulp.task("js", ["lint"], function () {
     return browserifyInstance
         .bundle()
@@ -85,7 +92,7 @@ gulp.task("js", ["lint"], function () {
         .pipe(source(jsBundleName))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(gulpIf(shouldMinify(), uglify().on("error", logError)))
+        .pipe(gulpIf(isReleaseMode(), uglify().on("error", logError)))
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest(jsBundleBuildDirectory));
 });
@@ -94,7 +101,7 @@ gulp.task("css", function () {
     return gulp.src(cssSource)
         .pipe(concat(cssBundleName))
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: shouldMinify() ? "compressed" : "nested"}))
+        .pipe(sass({outputStyle: isReleaseMode() ? "compressed" : "nested"}))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(cssBuildPath))
         .pipe(browserSync.stream());
@@ -123,7 +130,7 @@ gulp.task("templates", function () {
 gulp.task("html", ["js", "css"], function () {
     return gulp.src(htmlSource)
         .pipe(inject(gulp.src([jsBundleBuildPath, cssBundleBuildPath], {read: false}), {ignorePath: "dist"}))
-        .pipe(gulpIf(shouldMinify(), htmlmin({collapseWhitespace: true})))
+        .pipe(gulpIf(isReleaseMode(), htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest(rootBuildPath));
 });
 
@@ -151,4 +158,11 @@ gulp.task("dev", ["watch"], function () {
 		port: 8003,
         proxy: "http://localhost:3011"
     });
+});
+
+// Prepare for deployment.
+gulp.task("package", function () {
+    gulp.src([rootBuildPath + "/**", "./package.json"])
+        .pipe(zip("deploy.zip"))
+        .pipe(gulp.dest("."));
 });

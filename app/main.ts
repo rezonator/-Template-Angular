@@ -9,6 +9,7 @@ import {EnumPipe} from "./shared/enum.pipe";
 import BarGraphComponent from "./dashboard/bar-graph.component"
 import {FormsModule} from "@angular/forms";
 import TaskFilterPipe from "./tasks/tasks-filter.pipe";
+import "./prod"; // import for side effect.
 
 @NgModule({
     imports: [BrowserModule, routing,FormsModule, HttpModule],
