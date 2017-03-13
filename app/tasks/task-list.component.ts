@@ -10,6 +10,9 @@ import {Observable} from "rxjs";
 })
 export class TaskListComponent implements OnInit {
 // @Input() private tasks : Array<Task>;
+// but then we cant use router , would have to pass this input from some parent component like TaskView specifically
+
+    private searchTerm = "";
 
     tasks : Array<Task> = new Array<Task>();    
     
@@ -63,5 +66,10 @@ export class TaskListComponent implements OnInit {
             target[i] = source[i];
         }
         target.length = source.length;
+    }
+
+    /* Search relared */
+    clearSearchTerm() {
+        this.searchTerm = "";
     }
 }

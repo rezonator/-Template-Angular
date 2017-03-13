@@ -7,11 +7,12 @@ import {routing} from './app.routes';
 import {HttpModule} from "@angular/http";
 import {EnumPipe} from "./shared/enum.pipe";
 import BarGraphComponent from "./dashboard/bar-graph.component"
-
+import {FormsModule} from "@angular/forms";
+import TaskFilterPipe from "./tasks/tasks-filter.pipe";
 
 @NgModule({
-    imports: [BrowserModule, routing, HttpModule],
-    declarations: [AppComponent, TaskListComponent, EnumPipe, BarGraphComponent],
+    imports: [BrowserModule, routing,FormsModule, HttpModule],
+    declarations: [AppComponent, TaskListComponent, EnumPipe,TaskFilterPipe, BarGraphComponent],
     bootstrap: [AppComponent]    
 })
 class AppModule { }
