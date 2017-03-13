@@ -4,7 +4,6 @@ const https = require("https");
 
 process.on("uncaughtException", console.error);
 
-enableProdMode();
 
 const app = express();
 app.use(compression());

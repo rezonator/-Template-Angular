@@ -17,6 +17,7 @@ const tslint = require("gulp-tslint");
 const uglify = require("gulp-uglify");
 const watchify = require("watchify");
 const zip = require("gulp-zip");
+const fork = require('child_process').fork;
 
 const rootBuildPath = "./dist/";
 const cssBundleName = "site.css";
