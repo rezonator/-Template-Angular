@@ -6,12 +6,13 @@ import {TaskListComponent} from "./tasks/task-list.component";
 import {routing} from './app.routes';
 import {HttpModule} from "@angular/http";
 import {EnumPipe} from "./shared/enum.pipe";
+import BarGraphComponent from "./dashboard/bar-graph.component"
 
 
 @NgModule({
     imports: [BrowserModule, routing, HttpModule],
-    declarations: [AppComponent, TaskListComponent, EnumPipe],
-    bootstrap: [AppComponent]
+    declarations: [AppComponent, TaskListComponent, EnumPipe, BarGraphComponent],
+    bootstrap: [AppComponent]    
 })
 class AppModule { }
 
