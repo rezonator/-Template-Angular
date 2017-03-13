@@ -138,19 +138,17 @@ gulp.task("html-watch", ["html"], () => browserSync.reload());
 gulp.task("js-watch", ["js"], () => browserSync.reload());
 gulp.task("templates-watch", ["templates"], () => browserSync.reload());
 
-gulp.task("dev", ["default"], function () {
-    exec("node dist/server", function (err, stdout, stderr) {
-        console.log(stdout);
-        console.error(stderr);
-    });
-
+gulp.task("watch", ["default"], function () {
     gulp.watch(htmlSource, ["html-watch"]);
     gulp.watch(jsSource, ["js-watch"]);
     gulp.watch(templatesSource, ["templates-watch"]);
     gulp.watch(cssSource, ["css"]);
+});
 
+gulp.task("dev", ["watch"], function () {
+	fork("dist/server");
     browserSync.init({
-		port: 8001,
+		port: 8003,
         proxy: "http://localhost:3011"
     });
 });
