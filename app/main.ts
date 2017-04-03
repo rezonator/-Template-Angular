@@ -13,12 +13,12 @@ import {FormsModule} from "@angular/forms";
 import {UserInfoComponent} from "./user/user-info.component";
 import {OrgInfoComponent} from "./org/org-info.component";
 import TaskFilterPipe from "./tasks/tasks-filter.pipe";
-
+import {TabsModule} from "ngx-tabs";
 
 import "./prod"; // import for side effect.
 
 @NgModule({
-    imports: [BrowserModule, routing,FormsModule, HttpModule],
+    imports: [BrowserModule, routing,FormsModule, HttpModule,TabsModule],
     declarations: [AppComponent,TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, TaskFilterPipe, BarGraphComponent, UserInfoComponent, OrgInfoComponent],
     bootstrap: [AppComponent]    
 })
