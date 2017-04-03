@@ -1,5 +1,6 @@
 import {Component, OnInit, Inject} from "@angular/core";
 import {Task, TaskStatus, TSToken, ITaskService} from "../model";
+import {TaskItemComponent} from "./task-item.component"
 import {ActivatedRoute} from "@angular/router";
 import {TaskService} from "./task.service";
 import {Observable} from "rxjs";

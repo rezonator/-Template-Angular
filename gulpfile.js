@@ -19,7 +19,6 @@ const watchify = require("watchify");
 const zip = require("gulp-zip");
 const fork = require('child_process').fork;
 
-
 const rootBuildPath = "./dist/";
 const cssBundleName = "site.css";
 const cssBundleBuildPath = rootBuildPath + "/css/" + cssBundleName;
@@ -87,7 +86,8 @@ if(!isReleaseMode()) {
     browserifyInstance.ignore(require.resolve("./app/prod.ts"));
 }
 
-gulp.task("js", ["lint"], function () {
+// gulp.task("js", ["lint"], function () {
+gulp.task("js",function () {
     return browserifyInstance
         .bundle()
         .on("error", logError)

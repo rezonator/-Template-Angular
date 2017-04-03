@@ -11,18 +11,12 @@
 <div class="row city-list">
     <div class="col-xs-12">
         <div class="row well" *ngFor="let task of (tasks | taskFilter: searchTerm)">
-            <a>
-                <div class="col-xs-6">
-                    {{task.name}}
-                </div>
-                <div class="col-xs-6">
-                    {{task.status | enum }}
-                </div>
-            </a>
+            <task-item [task]="task"></task-item>
         </div>
     </div>
 </div>
  <!-- SOME FANCIES!! -->
+ <div>FANCY STUFF</div>
     <div class="row">
         <div class="col-xs-6">
             <h2 class="text-center">Top words</h2>
