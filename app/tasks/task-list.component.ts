@@ -3,11 +3,20 @@ import {Task, TaskStatus, TSToken, ITaskService} from "../model";
 import {TaskItemComponent} from "./task-item.component"
 import {ActivatedRoute} from "@angular/router";
 import {TaskService} from "./task.service";
+import {MessageService} from "../shared/message.service";
 import {Observable} from "rxjs";
 
 @Component({
     templateUrl : "./app/tasks/task-list.component.html",
-    providers : [TaskService]
+    providers : [TaskService, MessageService],
+        styles : [`
+        .priority-low {  background-color: yellow !important;  }
+        .priority-normal {  background-color: grey !important;    }
+        .priority-high { background-color: blue !important;  }
+        .priority-critical {   background-color: red !important;    }
+        .nopad { padding : 0;}
+    `    
+    ]
 })
 export class TaskListComponent implements OnInit {
 // @Input() private tasks : Array<Task>;
@@ -25,7 +34,7 @@ export class TaskListComponent implements OnInit {
     private _ids = new Map<string, number>();
 
 
-    constructor(private taskService : TaskService, private route : ActivatedRoute) {        
+    constructor(private taskService : TaskService, private messageService : MessageService, private route : ActivatedRoute) {        
     }   
 
     ngOnInit() {
@@ -41,6 +50,8 @@ export class TaskListComponent implements OnInit {
                this.updateIds(x);
                this.updateTasksOverTime(x);
             });
+
+        this.messageService.success('Data loaded fine!');
     }
 
     private updateIds(t : Task) {
@@ -72,5 +83,9 @@ export class TaskListComponent implements OnInit {
     /* Search relared */
     clearSearchTerm() {
         this.searchTerm = "";
+    }
+
+    getTaskClass(task: Task) {
+        return {'priority-low' : task.priority === 0, 'priority-normal' : task.priority === 1, 'priority-high' : task.priority === 2 , 'priority-critical' : task.priority === 3};
     }
 }

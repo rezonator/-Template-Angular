@@ -52,7 +52,7 @@
                         <td>Department:</td>
                         <td>{{user.department}}</td>
                       </tr>                                         
-                        <tr>
+                        <tr *ngIf="user.isPublic">
                         <td>Home Address</td>
                         <td> 
                             <p>{{ user.location?.address }}</p>

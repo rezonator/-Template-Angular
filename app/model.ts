@@ -7,6 +7,13 @@ export enum TaskStatus {
     Done
 }
 
+export enum TaskPriority {
+    Low = 0, 
+    Normal,
+    High,
+    Critical
+}
+
 export enum Gender {
     Male = 0,
     Female
@@ -21,6 +28,7 @@ export class Task {
     description : string;
     created : string;
     status : TaskStatus;
+    priority : TaskPriority;
     update : string  ;
     //tags : Array<any> 
     // pamietac o strukturalnej widzialnosci - szef moze widziec themesy swich podwladnych etc
@@ -53,6 +61,7 @@ export class User {
     location : Location;
     // organization structure
     orgId : string;
+    isPublic : boolean;
 }
 
 // Organization info.

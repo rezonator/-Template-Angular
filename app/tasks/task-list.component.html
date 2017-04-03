@@ -10,8 +10,9 @@
 </div>
 <div class="row city-list">
     <div class="col-xs-12">
-        <div class="row well" *ngFor="let task of (tasks | taskFilter: searchTerm)">
-            <task-item [task]="task"></task-item>
+        <div class="row well nopad" *ngFor="let task of (tasks | taskFilter: searchTerm)"> 
+            <div [ngClass]="getTaskClass(task)" >&nbsp;</div>
+                <task-item [task]="task"></task-item>
         </div>
     </div>
 </div>

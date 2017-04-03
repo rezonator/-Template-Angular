@@ -18,12 +18,14 @@ import {Tab} from "./shared/tabs/tab.component";
 import {TabHeading} from "./shared/tabs/tab-heading";
 import {Tabset} from "./shared/tabs/tabset.component";
 import {TabTransclude} from "./shared/tabs/tab-transclude";
+import { NavComponent} from "./nav/nav.component";
 
 import "./prod"; // import for side effect.
 
 @NgModule({
     imports: [BrowserModule, routing,FormsModule, HttpModule],
-    declarations: [AppComponent,TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, TaskFilterPipe, BarGraphComponent, UserInfoComponent, OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude],
+    declarations: [AppComponent,TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, TaskFilterPipe, BarGraphComponent, UserInfoComponent, 
+        OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude, NavComponent],
     bootstrap: [AppComponent]    
 })
 class AppModule { }

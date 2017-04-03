@@ -40,7 +40,9 @@ const libSource = [
     "node_modules/es6-shim/es6-shim.map",
     "node_modules/zone.js/dist/zone.min.js",
     "node_modules/reflect-metadata/Reflect.js",
-    "node_modules/reflect-metadata/Reflect.js.map"
+    "node_modules/reflect-metadata/Reflect.js.map",
+    "node_modules/toastr/build/toastr.min.js",
+    "node_modules/toastr/build/toastr.css"
 ];
 const libBuildPath = rootBuildPath + "/lib";
 const serverSource = "./server.js";
