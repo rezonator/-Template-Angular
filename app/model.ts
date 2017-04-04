@@ -30,8 +30,19 @@ export class Task {
     status : TaskStatus;
     priority : TaskPriority;
     update : string  ;
+    engagementId : string;
     //tags : Array<any> 
     // pamietac o strukturalnej widzialnosci - szef moze widziec themesy swich podwladnych etc
+}
+
+// Engagement is a collection of tasks.
+export class Engagement {
+    id : string;
+    name : string;
+    description : string;
+    ownerIds : string [] ;
+    created : string;
+    tasks : Array<Task>;
 }
 
 // Location data.
@@ -76,7 +87,9 @@ export class Org {
 
 // Task service.
 export interface ITaskService {
-     getTasksForTheme(themeId : string) : Array<Task>;
+    // get tasks for engagement.
+     getTasksForEng(engId : string) : Array<Task>;
+     getEngForUser(userId : string) : Array<Engagement>;
 }
 
 export interface IUsersService {

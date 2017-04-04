@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" placeholder="Search">
+            </div>
+            <button class="btn btn-default" (click)="clearSearchTerm()">Clear</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+     <div  class="well hoverwell thumbnail">
+      <h2>{{engagement?.name}}</h2>
+      <div>Date: {{engagement?.created}}</div>
+     <div>Description: {{engagement?.description}}</div>
+    </div>
+</div>
+
+<div class="row city-list">
+    <div class="col-xs-12">
+        <div class="row well nopad" *ngFor="let task of (tasks | taskFilter: searchTerm)"> 
+            <div [ngClass]="getTaskClass(task)" >&nbsp;</div>
+                <task-item [task]="task"></task-item>
+        </div>
+    </div>
+</div>

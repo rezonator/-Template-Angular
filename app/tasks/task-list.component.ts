@@ -41,7 +41,7 @@ export class TaskListComponent implements OnInit {
     ngOnInit() {
         // Get route params.
         this.route.params.subscribe(pars => {
-            var itemz = this.taskService.getTasksForTheme("1").map(r => r as Task);
+            var itemz = this.taskService.getTasksForEng("1").map(r => r as Task);
             this.tasks = itemz;
         });         
 

@@ -14,6 +14,8 @@ import {FormsModule} from "@angular/forms";
 import {UserInfoComponent} from "./user/user-info.component";
 import {OrgInfoComponent} from "./org/org-info.component";
 import TaskFilterPipe from "./tasks/tasks-filter.pipe";
+import EngagementFilterPipe from "./tasks/engagement-filter.pipe";
+import {CountArrayPipe} from "./shared/countArray.pipe";
 import {TaskDetailsComponent} from "./tasks/task-details/task-details.component";
 /* Tabz */
 import {Tab} from "./shared/tabs/tab.component";
@@ -21,13 +23,17 @@ import {TabHeading} from "./shared/tabs/tab-heading";
 import {Tabset} from "./shared/tabs/tabset.component";
 import {TabTransclude} from "./shared/tabs/tab-transclude";
 import { NavComponent} from "./nav/nav.component";
+import {EngagementComponent} from "./tasks/engagement.component";
+import {EngagementListComponent} from "./tasks/engagement-list.component";
+import {EngagementItemComponent} from "./tasks/engagement-item.component";
 
 import "./prod"; // import for side effect.
 
 @NgModule({
     imports: [BrowserModule, routing,FormsModule, HttpModule],
-    declarations: [AppComponent, TaskDetailsComponent, TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, PEnumPipe, TaskFilterPipe, BarGraphComponent, UserInfoComponent, 
-        OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude, NavComponent],
+    declarations: [AppComponent, TaskDetailsComponent, TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, PEnumPipe, TaskFilterPipe, EngagementFilterPipe, 
+        BarGraphComponent, UserInfoComponent, CountArrayPipe, OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude, NavComponent, EngagementItemComponent,
+        EngagementComponent, EngagementListComponent],
     bootstrap: [AppComponent]    
 })
 class AppModule { }
