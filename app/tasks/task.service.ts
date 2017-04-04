@@ -52,6 +52,14 @@ export class TaskService implements ITaskService {
         return this.engagements;
     }
 
+    checkEngExists(engId : string) : boolean {
+        return this.engagements.find(e => e.id == engId) !== undefined;
+    }
+
+    checkTaskExists(taskId : string) : boolean {
+        return this.tasks.find(t => t.id == taskId) !== undefined;
+    }
+
 
     // Returns a simulated stream of tasks.
     getTasksStream() {

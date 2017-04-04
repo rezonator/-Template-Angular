@@ -90,6 +90,8 @@ export interface ITaskService {
     // get tasks for engagement.
      getTasksForEng(engId : string) : Array<Task>;
      getEngForUser(userId : string) : Array<Engagement>;
+     checkEngExists(engId :string) : boolean;
+     checkTaskExists(taskId : string) : boolean;
 }
 
 export interface IUsersService {

@@ -2,12 +2,12 @@
 import {Component, OnInit, Inject} from "@angular/core";
 import {Task,Engagement, TaskStatus, TSToken, ITaskService} from "../model";
 import {MessageService} from "../shared/message.service";
-import {TaskService} from "./task.service";
+import {TaskService} from "../tasks/task.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector : "engagement-list" ,
-    templateUrl : "./app/tasks/engagement-list.component.html",
+    templateUrl : "./app/engagements/engagement-list.component.html",
     providers : [TaskService, MessageService],
 })
 export class EngagementListComponent implements OnInit {
