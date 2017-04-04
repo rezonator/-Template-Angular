@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Observable, Observer} from "rxjs";
+import { Observable, Observer, Subject } from "rxjs";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {Task, TaskStatus, Engagement, TaskPriority, ITaskService } from "../model"
@@ -50,6 +50,15 @@ export class TaskService implements ITaskService {
 
     getEngForUser(userId: string): Engagement[] {
         return this.engagements;
+    }
+
+    getEngForUserAsync(userId : string) : Subject<Array<Engagement>> {
+        let subject = new Subject()
+        setTimeout(() => {
+            subject.next(this.engagements);
+            subject.complete();
+        }, 2000);
+        return subject;
     }
 
     checkEngExists(engId : string) : boolean {

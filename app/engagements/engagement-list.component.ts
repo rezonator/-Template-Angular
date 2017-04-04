@@ -20,7 +20,10 @@ export class EngagementListComponent implements OnInit {
 
     ngOnInit(): void {
          this.route.params.subscribe(pars => {
-            this.engagements = this.taskService.getEngForUser(pars["id"]);
+            // this.engagements = this.taskService.getEngForUser(pars["id"]);            
+            this.taskService.getEngForUserAsync(pars["id"]).subscribe(e => {
+                this.engagements = e;
+            });            
         });           
 
         this.messageService.success('Engagements loaded fine!');
