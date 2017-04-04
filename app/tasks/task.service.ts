@@ -8,13 +8,13 @@ import {Task, TaskStatus, TaskPriority, ITaskService } from "../model"
 @Injectable()
 export class TaskService implements ITaskService {
     tasks = [
-        { id : "123", name : "task1", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring", 
+        { id : "1", name : "task1", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring", 
             priority : TaskPriority.Low  },
-        { id : "123", name : "task1", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
+        { id : "2", name : "task2", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
             priority : TaskPriority.High },
-        { id : "123", name : "task1", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
+        { id : "3", name : "task3", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
             priority : TaskPriority.Normal },
-        { id : "123", name : "task1", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
+        { id : "4", name : "task4", ownerid : "someid", created : "02/03/2016", assigned : "Jarek", description :"Som task",  status : TaskStatus.Idle, update : "somestring",
             priority : TaskPriority.Critical }
     ];
 
@@ -23,6 +23,13 @@ export class TaskService implements ITaskService {
     // Get's snapshot of tasks.
     getTasksForTheme(themeId : string) {
         return this.tasks;
+    }
+
+    getTaskForId(taskId : string) : Task {
+        var task = this.tasks.find(t => t.id == taskId);
+        if(task == undefined)
+            return null;
+        return task;
     }
 
     // Returns a simulated stream of tasks.

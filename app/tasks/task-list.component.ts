@@ -3,6 +3,7 @@ import {Task, TaskStatus, TSToken, ITaskService} from "../model";
 import {TaskItemComponent} from "./task-item.component"
 import {ActivatedRoute} from "@angular/router";
 import {TaskService} from "./task.service";
+import {TaskDetailsComponent} from "./task-details/task-details.component";
 import {MessageService} from "../shared/message.service";
 import {Observable} from "rxjs";
 

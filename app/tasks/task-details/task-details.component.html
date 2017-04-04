@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{task?.name}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Status:</strong> {{task?.status | enum }}</div>
+      <div><strong>Priority:</strong> {{task?.priority | penum }}</div>
+      <div><strong>Description:</strong> {{task?.description}}</div>
+        <div><strong>Assigned:</strong> {{task?.assigned}}</div>      
+      <div><strong>Created:</strong> {{task?.created}}</div>
+      <div><strong>Updated:</strong> {{task?.updated}}</div>    
+    </div>    
+  </div>
+</div>
