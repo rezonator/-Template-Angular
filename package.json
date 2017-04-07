@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "build:prod": "webpack -p --progress",
+    "build:watch": "webpack --watch --colors --progress",
+    "dev" : "live-server ./dist"
   },
   "engines": {
     "node": "7.5.0"
@@ -59,6 +62,11 @@
     "zone.js": "^0.8.0"
   },
   "devDependencies": {
-    "es6-promise-loader": "^1.0.2"
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "es6-promise-loader": "^1.0.2",
+    "html-webpack-plugin": "^2.28.0",
+    "ts-loader": "^2.0.3",
+    "webpack": "^2.3.3"
   }
 }
