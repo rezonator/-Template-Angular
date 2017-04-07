@@ -9,13 +9,17 @@ module.exports = {
     entry : './app/main.ts',
     output : {
         path : path.resolve(__dirname, 'dist'),
-        filename : './app/bundle.js'
+        filename : './app/bundle.js',
+        chunkFilename: '[id].chunk.js'
+        
     },
     module :{
         loaders : [
             {
-                test : /\.ts$/, loader : 'ts-loader'
-            },
+                test : /\.ts$/, loaders : [
+                    'awesome-typescript-loader',
+                    'angular-router-loader'
+                ]},
             {
                 test: /\.scss$/,
                 loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]

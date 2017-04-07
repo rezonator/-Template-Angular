@@ -15,12 +15,13 @@ import {PEnumPipe} from "./shared/penum.pipe";
 import BarGraphComponent from "./dashboard/bar-graph.component"
 import {FormsModule} from "@angular/forms";
 import {UserInfoComponent} from "./user/user-info.component";
+import {UserSettingsComponent} from "./user/user-settings.component";
 import {OrgInfoComponent} from "./org/org-info.component";
 import TaskFilterPipe from "./tasks/tasks-filter.pipe";
 import EngagementFilterPipe from "./engagements/engagement-filter.pipe";
 import {CountArrayPipe} from "./shared/countArray.pipe";
 import {TaskDetailsComponent} from "./tasks/task-details/task-details.component";
-
+import {AboutComponent} from "./+general/about.component";
 /* Tabz */
 import {Tab} from "./shared/tabs/tab.component";
 import {TabHeading} from "./shared/tabs/tab-heading";
@@ -54,7 +55,7 @@ import { checkEngagementNewDirty } from "./shared/utils";
     ],
     declarations: [AppComponent, TaskDetailsComponent, TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, PEnumPipe, TaskFilterPipe, EngagementFilterPipe, 
         BarGraphComponent, UserInfoComponent, CountArrayPipe, OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude, NavComponent, EngagementItemComponent,
-        EngagementDetailsComponent, EngagementListComponent, CreateEngagementComponent, Error404Component],
+        EngagementDetailsComponent, EngagementListComponent, CreateEngagementComponent, Error404Component, UserSettingsComponent, AboutComponent],
     bootstrap: [AppComponent]    
 })
 class AppModule { }

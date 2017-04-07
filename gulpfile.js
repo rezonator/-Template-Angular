@@ -42,7 +42,7 @@ const libSource = [
     "node_modules/reflect-metadata/Reflect.js",
     "node_modules/reflect-metadata/Reflect.js.map",
     "node_modules/toastr/build/toastr.min.js",
-    "node_modules/toastr/build/toastr.css"
+    "node_modules/toastr/build/toastr.css",
 ];
 const libBuildPath = rootBuildPath + "/lib";
 const serverSource = "./server.js";
@@ -126,6 +126,7 @@ gulp.task("lib", function () {
         .pipe(gulp.dest(libBuildPath));
 });
 
+
 gulp.task("templates", function () {
     return gulp.src(templatesSource)
         .pipe(gulp.dest(templatesBuildPath));
@@ -157,6 +158,14 @@ gulp.task("watch", ["default"], function () {
 });
 
 gulp.task("dev", ["watch"], function () {
+	fork("dist/server");
+    browserSync.init({
+		port: 8003,
+        proxy: "http://localhost:3011"
+    });
+});
+
+gulp.task("serve", function () {
 	fork("dist/server");
     browserSync.init({
 		port: 8003,
