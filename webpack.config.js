@@ -6,12 +6,10 @@ var CleanWebpackPlugin = require('clean-webpack-plugin'); // cleaning before bui
 const path = require('path');
 
 module.exports = {
-    entry : './app/main.ts',
-    output : {
+    entry : './app/main.ts',        
+     output : {
         path : path.resolve(__dirname, 'dist'),
-        filename : './app/bundle.js',
-        chunkFilename: '[id].chunk.js'
-        
+        filename : './app/bundle.js'
     },
     module :{
         loaders : [
@@ -30,11 +28,11 @@ module.exports = {
         extensions : ['.js','.ts']
     }    ,
     plugins : [
-         new CleanWebpackPlugin(['dist'], {
+        new CleanWebpackPlugin(['dist'], {
             root: './',
             verbose: true,
             dry: false
-        }),
+        }),     
         new htmlWebpackPlugin({
             template : path.resolve(__dirname, 'index.html')
         }), 
