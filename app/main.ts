@@ -1,5 +1,4 @@
 /* webpack shennanningans */
-import 'reflect-metadata';
 
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {NgModule} from "@angular/core";
@@ -21,7 +20,6 @@ import TaskFilterPipe from "./tasks/tasks-filter.pipe";
 import EngagementFilterPipe from "./engagements/engagement-filter.pipe";
 import {CountArrayPipe} from "./shared/countArray.pipe";
 import {TaskDetailsComponent} from "./tasks/task-details/task-details.component";
-import {AboutComponent} from "./+general/about.component";
 /* Tabz */
 import {Tab} from "./shared/tabs/tab.component";
 import {TabHeading} from "./shared/tabs/tab-heading";
@@ -55,7 +53,7 @@ import { checkEngagementNewDirty } from "./shared/utils";
     ],
     declarations: [AppComponent, TaskDetailsComponent, TaskItemComponent, TaskListComponent, EnumPipe, GEnumPipe, PEnumPipe, TaskFilterPipe, EngagementFilterPipe, 
         BarGraphComponent, UserInfoComponent, CountArrayPipe, OrgInfoComponent, Tab, TabHeading, Tabset, TabTransclude, NavComponent, EngagementItemComponent,
-        EngagementDetailsComponent, EngagementListComponent, CreateEngagementComponent, Error404Component, UserSettingsComponent, AboutComponent],
+        EngagementDetailsComponent, EngagementListComponent, CreateEngagementComponent, Error404Component, UserSettingsComponent],
     bootstrap: [AppComponent]    
 })
 class AppModule { }

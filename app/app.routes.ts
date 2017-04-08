@@ -10,7 +10,7 @@ import { CreateEngagementComponent } from "./engagements/create-engagement.compo
 import { Error404Component } from "./errors/404.component";
 import { EngagementRouteActivator } from "./engagements/engagement-route-activator.service";
 import { TaskRouteActivator } from "./tasks/task-route-activator.service";
-import {AboutComponent} from "./+general/about.component";
+import {AboutComponent} from "./general/about.component";
 
 declare var require:any;
 
@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: "org/:id", component: OrgInfoComponent}   ,
     {path: "task/:id", component: TaskDetailsComponent, canActivate : [TaskRouteActivator]} ,
     {path : "404", component:Error404Component},
-    { path: 'general', loadChildren: './+general/general.module#GeneralModule' }
+    { path: 'general', loadChildren: './general/general.module#GeneralModule' }
 ];
 
 export const appRoutingProviders: Array<any> = [];
